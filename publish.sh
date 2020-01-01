@@ -13,6 +13,10 @@ do
     echo $(date +"%Y-%m-%d %H:%M:%S") " publish $book to $webdoc" &>> ../_pub.log
     if [ -d $book ] ;
     then
-        cp -rf $book $webdoc
+        cd $book
+        gitbook build
+        mkdir $webdoc/$book -p
+        cp -rf _book $webdoc/$book
+        cd ..
     fi
 done
