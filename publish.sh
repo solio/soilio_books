@@ -2,7 +2,7 @@
 
 . ../web.conf
 
-books=$(ls -l)
+books=$(ls)
 webdoc=$WEB_DIR
 
 git reset --hard HEAD
@@ -10,5 +10,9 @@ git clean -xdf
 
 for book in $books; 
 do
-    echo $(date +"%Y-%m-%d %H:%M:%S") " publish $book to $webdoc" &>> _pub.log
+    echo $(date +"%Y-%m-%d %H:%M:%S") " publish $book to $webdoc" &>> ../_pub.log
+    if [ -f $book] ;
+    then
+        cp -rf $book $webdoc
+    fi
 done
