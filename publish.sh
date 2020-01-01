@@ -15,8 +15,9 @@ do
     then
         cd $book
         gitbook build
+        rm -rf $webdoc/$book
         mkdir $webdoc/$book -p
-        cp -rf _book $webdoc/$book
+        cp -rf _book/* $webdoc/$book
         cd ..
     fi
 done
