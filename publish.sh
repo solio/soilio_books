@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. web.conf
+. ../web.conf
 
 books=$(ls -l)
 webdoc=$WEB_DIR
